@@ -34,4 +34,17 @@ chmod 777 /root/AutoRclone/autoClone/madmax_ram.sh
 chmod 777 /root/AutoRclone/autoClone/madmax_bld.sh
 chmod 777 /root/AutoRclone/autoClone/autoClone.sh
 screen -dmS madmax
-screen -S madmax -X stuff  "/root/AutoRclone/autoClone/madmax.sh UPM 0 100 11 11 120 ^M"
+screen -S madmax -X stuff  "/root/AutoRclone/autoClone/madmax.sh UP 0 200 22 ^M"
+
+apt install sshpass
+
+sleep 4
+sshpass -p 'Serhildanroot.123' scp -o StrictHostKeyChecking=no -r  root@5.161.53.96:/root/AutoRclone/autoClone/autoClone.sh /root/AutoRclone/autoClone
+
+sleep 4
+sshpass -p 'Serhildanroot.123' scp -o StrictHostKeyChecking=no -r root@5.161.53.96:/root/.config/rclone/rclone.conf /root/.config/rclone/rclone.conf
+
+sleep 4
+ screen -S clone -X stuff  "^C ^M"
+
+ screen -S clone -X stuff  "/root/AutoRclone/autoClone/autoClone.sh disk2 UP 0 200 22 ^M"
